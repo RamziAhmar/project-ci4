@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Coba</title>
+    <title><?= $judul ?> | <?= $title ?></title>
 </head>
 
 <body>
@@ -31,10 +31,10 @@
                 <?php endif ?>
 
 
-                <a href="" class="btn btn-md btn-success mb-3" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus"></i> TAMBAH
+                <a href="<?= base_url('dosen/tambah_dosen') ?>" class="btn btn-md btn-success mb-3"><i class="fa fa-plus"></i> TAMBAH
                     DATA</a>
                 <table class="table table-bordered table-striped">
-                    
+
                     <thead class="thead-dark">
                         <tr>
                             <th>No</th>
@@ -75,50 +75,6 @@
             </div>
         </div>
     </div>
-
-    
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data Dosen</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="<?= base_url('dosen') ?>" method="POST">
-                        <div class="form-group">
-                            <label for="kode_dosen">Kode</label>
-                            <input type="text" class="form-control" name="kode_dosen" id="kode_dosen"
-                                placeholder="Kode Dosen">
-                        </div>
-                        <div class="form-group">
-                            <label for="nama_dosen">Nama</label>
-                            <input type="text" class="form-control" name="nama_dosen" id="nama_dosen"
-                                placeholder="Nama Dosen">
-                        </div>
-                        <div class="form-group">
-                            <label for="status_dosen">Status</label>
-                            <select name="status_dosen" id="status_dosen" class="form-control">
-                                <option>--Pilih--</option>
-                                <option value="1">Aktif</option>
-                                <option value="2">Tidak Aktif</option>
-                            </select>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                            <input type="submit" class="btn btn-primary">
-                        </div>
-                    </form>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

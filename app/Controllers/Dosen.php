@@ -5,6 +5,10 @@ use App\Models\DosenModel;
 
 class Dosen extends BaseController
 {
+    public function __construct()
+    {
+        
+    }
     public function index(): string
     {
         //model initialize
@@ -13,9 +17,20 @@ class Dosen extends BaseController
 
         $data = array(
             'DataDosen' => $DataDosen->paginate(5, 'dosen'),
-            'pager' => $DataDosen->pager
+            'pager' => $DataDosen->pager,
+            'judul' => 'Dosen',
+            'title' => 'List Data'
         );
         return view('dosen', $data);
+    }
+
+    public function btTambah()
+    {
+        $data = [
+            'judul' => 'Dosen',
+            'title' => 'Tambah Data'
+        ];
+        return view('tambah_dosen', $data);
     }
 
     public function create()
@@ -30,14 +45,15 @@ class Dosen extends BaseController
         $validation->setRules([
             'kode_dosen' => 'required',
             'nama_dosen'=> 'required',
-            'status'=> 'required',
+            'status_dosen'=> 'required',
         ]);
 
         //jika validasi gagal
-        if ($validation->withRequest($this->request)->run()) 
+        if (!$validation->withRequest($this->request)->run()) 
         {
             $data['validation'] = $validation;
-            return view('dosen', $data);
+            // Jika validasi gagal, kembalikan pengguna ke halaman tambah dengan pesan kesalahan
+            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
         }
 
         //jika validasi berhasil
